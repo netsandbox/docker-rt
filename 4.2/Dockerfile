@@ -25,5 +25,7 @@ RUN a2dissite 000-default.conf && a2ensite rt.conf
 
 RUN chown -R www-data:www-data /opt/rt4/var/
 
+VOLUME /opt/rt4
+
 EXPOSE 80
 CMD ["/usr/sbin/apache2","-DFOREGROUND"]
