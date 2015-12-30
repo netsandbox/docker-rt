@@ -103,7 +103,6 @@ RUN cd /usr/local/src \
 
 COPY apache.rt.conf /etc/apache2/sites-available/rt.conf
 RUN a2dissite 000-default.conf && a2ensite rt.conf
-#RUN service apache2 start
 
 # Manually set up the apache environment variables
 # TODO: why we need this here, it's already in /etc/apache2/envvars
@@ -114,6 +113,4 @@ ENV APACHE_RUN_GROUP=www-data
 ENV APACHE_RUN_USER=www-data
 
 EXPOSE 80
-#CMD ["/bin/bash"]
 CMD ["/usr/sbin/apache2","-DFOREGROUND"]
-#CMD ["apache2-foreground"]
