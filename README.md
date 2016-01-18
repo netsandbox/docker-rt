@@ -11,6 +11,8 @@ Request Tracker (RT) is an open source issue tracking system.
 
 # How to use this image
 
+**This image is intended for development or testing, not for production use.**
+
 ```console
 $ docker run -it --rm --name rt -p 8080:80 netsandbox/request-tracker
 ```

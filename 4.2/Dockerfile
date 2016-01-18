@@ -23,5 +23,13 @@ RUN cd /usr/local/src \
 COPY apache.rt.conf /etc/apache2/sites-available/rt.conf
 RUN a2dissite 000-default.conf && a2ensite rt.conf
 
+RUN chown -R www-data:www-data /opt/rt4/var/
+
+COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
+RUN chown root:www-data /opt/rt4/etc/RT_SiteConfig.pm \
+  && chmod 0640 /opt/rt4/etc/RT_SiteConfig.pm
+
+VOLUME /opt/rt4
+
 EXPOSE 80
 CMD ["/usr/sbin/apache2","-DFOREGROUND"]
