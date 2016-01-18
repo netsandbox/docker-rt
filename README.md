@@ -1,6 +1,7 @@
 [![Travis CI](https://img.shields.io/travis/cloos/docker-rt/master.svg)](https://travis-ci.org/cloos/docker-rt/branches)
 # Supported tags and respective `Dockerfile` links
 
+-	[`4.0` (4.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.0/Dockerfile)
 -	[`4.2`, `latest` (4.2/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.2/Dockerfile)
 
 # What is Request Tracker?
