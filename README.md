@@ -2,7 +2,8 @@
 # Supported tags and respective `Dockerfile` links
 
 -	[`4.0` (4.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.0/Dockerfile)
--	[`4.2`, `latest` (4.2/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.2/Dockerfile)
+-	[`4.2` (4.2/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.2/Dockerfile)
+-	[`4.4`, `latest` (4.4/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.4/Dockerfile)
 
 # What is Request Tracker?
 
