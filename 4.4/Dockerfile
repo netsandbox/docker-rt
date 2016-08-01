@@ -2,8 +2,8 @@ FROM netsandbox/request-tracker-base
 
 MAINTAINER Christian Loos <cloos@netsandbox.de>
 
-ENV RT_VERSION 4.4.0
-ENV RT_SHA1 3bfeeac1e7a7cd4b1a042db04459f0e87c2b5fbb
+ENV RT_VERSION 4.4.1
+ENV RT_SHA1 a3c7aa5398af4f53c947b4bee8c91cecd5beb432
 
 RUN cd /usr/local/src \
   && curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-${RT_VERSION}.tar.gz" -o rt.tar.gz \
