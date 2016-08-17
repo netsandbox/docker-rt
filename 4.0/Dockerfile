@@ -17,6 +17,7 @@ RUN cd /usr/local/src \
     --enable-gd \
     --enable-graphviz \
     --with-db-type=SQLite \
+    --with-devel-mode \
   && make install \
   && make initdb
 
