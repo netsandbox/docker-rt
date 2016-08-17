@@ -14,6 +14,7 @@ RUN cd /usr/local/src \
   && ./configure \
     --disable-gpg \
     --disable-smime \
+    --enable-developer \
     --enable-gd \
     --enable-graphviz \
     --with-db-type=SQLite \

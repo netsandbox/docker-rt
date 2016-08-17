@@ -13,10 +13,10 @@ RUN cd /usr/local/src \
   && cd "rt-${RT_VERSION}" \
   && ./configure \
     --disable-gpg \
-    --disable-smime \
     --enable-gd \
     --enable-graphviz \
     --with-db-type=SQLite \
+    --with-devel-mode \
   && make install \
   && make initdb
 
