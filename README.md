@@ -1,4 +1,7 @@
-[![Travis CI](https://img.shields.io/travis/cloos/docker-rt/master.svg)](https://travis-ci.org/cloos/docker-rt/branches)
+[![Travis CI](https://img.shields.io/travis/cloos/docker-rt/master.svg)](https://travis-ci.org/cloos/docker-rt-base)
+[![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
+[![Image Size and Layers](https://images.microbadger.com/badges/image/netsandbox/request-tracker.svg)](https://microbadger.com/images/netsandbox/request-tracker "Get your own image badge on microbadger.com")
 # Supported tags and respective `Dockerfile` links
 
 -	[`4.0` (4.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.0/Dockerfile)
