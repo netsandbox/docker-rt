@@ -19,7 +19,8 @@ RUN cd /usr/local/src \
     --enable-graphviz \
     --with-db-type=SQLite \
   && make install \
-  && make initdb
+  && make initdb \
+  && rm -rf /usr/local/src/*
 
 COPY apache.rt.conf /etc/apache2/sites-available/rt.conf
 RUN a2dissite 000-default.conf && a2ensite rt.conf

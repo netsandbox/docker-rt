@@ -18,7 +18,8 @@ RUN cd /usr/local/src \
     --with-db-type=SQLite \
     --with-devel-mode \
   && make install \
-  && make initdb
+  && make initdb \
+  && rm -rf /usr/local/src/*
 
 COPY apache.rt.conf /etc/apache2/sites-available/rt.conf
 RUN a2dissite 000-default.conf && a2ensite rt.conf
