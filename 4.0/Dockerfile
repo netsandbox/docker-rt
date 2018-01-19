@@ -26,8 +26,6 @@ RUN a2dissite 000-default.conf && a2ensite rt.conf
 RUN chown -R www-data:www-data /opt/rt4/var/
 
 COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
-RUN chown root:www-data /opt/rt4/etc/RT_SiteConfig.pm \
-  && chmod 0640 /opt/rt4/etc/RT_SiteConfig.pm
 
 # /etc/apache2/envvars isn't sourced by default
 ENV APACHE_LOCK_DIR=/var/lock/apache2 \
