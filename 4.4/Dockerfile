@@ -1,6 +1,6 @@
 FROM netsandbox/request-tracker-base
 
-MAINTAINER Christian Loos <cloos@netsandbox.de>
+LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
 
 ENV RT_VERSION 4.4.2
 ENV RT_SHA b2e366e18c8cb1dfd5bc6c46c116fd28cfa690a368b13fbf3131b21a0b9bbe68
