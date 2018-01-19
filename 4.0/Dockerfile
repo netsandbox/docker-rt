@@ -29,6 +29,13 @@ COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
 RUN chown root:www-data /opt/rt4/etc/RT_SiteConfig.pm \
   && chmod 0640 /opt/rt4/etc/RT_SiteConfig.pm
 
+# /etc/apache2/envvars isn't sourced by default
+ENV APACHE_LOCK_DIR=/var/lock/apache2 \
+  APACHE_LOG_DIR=/var/log/apache2 \
+  APACHE_PID_FILE=/var/run/apache2/apache2.pid \
+  APACHE_RUN_GROUP=www-data \
+  APACHE_RUN_USER=www-data
+
 VOLUME /opt/rt4
 
 EXPOSE 80
