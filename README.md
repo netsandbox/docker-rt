@@ -12,7 +12,7 @@
 
 Request Tracker (RT) is an open source issue tracking system.
 
-> https://www.bestpractical.com/rt/
+> https://bestpractical.com/request-tracker
 
 # How to use this image
 
