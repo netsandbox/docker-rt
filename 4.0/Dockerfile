@@ -12,11 +12,7 @@ RUN cd /usr/local/src \
   && rm rt.tar.gz \
   && cd "rt-${RT_VERSION}" \
   && ./configure \
-    --disable-gpg \
-    --enable-gd \
-    --enable-graphviz \
-    --with-db-type=SQLite \
-    --with-devel-mode \
+    --disable-gpg --enable-gd --enable-graphviz --with-db-type=SQLite --with-devel-mode \
   && make install \
   && make initdb \
   && rm -rf /usr/local/src/*
