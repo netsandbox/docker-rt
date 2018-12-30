@@ -31,5 +31,9 @@ COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
 
 VOLUME /opt/rt4
 
+COPY docker-entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 EXPOSE 80
 CMD ["apache2-foreground"]
