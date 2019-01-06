@@ -9,7 +9,6 @@ RUN cd /usr/local/src \
   && curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-${RT_VERSION}.tar.gz" -o rt.tar.gz \
   && echo "${RT_SHA}  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz \
-  && rm rt.tar.gz \
   && cd "rt-${RT_VERSION}" \
   && ./configure \
     --disable-gpg --enable-gd --enable-graphviz --with-db-type=SQLite --with-devel-mode \
