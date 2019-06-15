@@ -4,8 +4,8 @@ set -euo pipefail
 
 declare -A versions=(
   [4.0.25]='69daa9b9e6c9acb4ca31ec1c3efc8bb4901cc7047eed784f2f91515815fdd4cd'
-  [4.2.15]='3752a12eff67c640e577d2b5feda01c9f07e3b2e227eabf50089086e98038bba'
-  [4.4.3]='738ab43cac902420b3525459e288515d51130d85810659f6c8a7e223c77dadb1'
+  [4.2.16]='1bbe619072b05efb55725c9df851363892b77ad6788dfd28eadce6a8f84a8209'
+  [4.4.4]='34c316a4a78d7ee9b95d4391530f9bb3ff3edd99ebbebfac6354ed173e940884'
 )
 travis_env=
 for rt_version in "${!versions[@]}"; do
