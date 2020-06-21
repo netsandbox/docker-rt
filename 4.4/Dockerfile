@@ -5,13 +5,15 @@ LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
 ENV RT_VERSION 4.4.4
 ENV RT_SHA 34c316a4a78d7ee9b95d4391530f9bb3ff3edd99ebbebfac6354ed173e940884
 
-RUN cd /usr/local/src \
-  && curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-${RT_VERSION}.tar.gz" -o rt.tar.gz \
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+WORKDIR /usr/local/src
+RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-${RT_VERSION}.tar.gz" -o rt.tar.gz \
   && echo "${RT_SHA}  rt.tar.gz" | sha256sum -c \
-  && tar -xzf rt.tar.gz \
-  && cd "rt-${RT_VERSION}" \
-  && ./configure \
-    --disable-gpg --disable-smime --enable-developer --enable-gd --enable-graphviz --with-db-type=SQLite \
+  && tar -xzf rt.tar.gz
+
+WORKDIR /usr/local/src/rt-${RT_VERSION}
+RUN ./configure --disable-gpg --disable-smime --enable-developer --enable-gd --enable-graphviz --with-db-type=SQLite \
   && make install \
   && make initdb \
   && rm -rf /usr/local/src/*
