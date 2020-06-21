@@ -2,17 +2,14 @@ FROM netsandbox/request-tracker-base
 
 LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
 
-ENV RT_VERSION 4.2.16
-ENV RT_SHA 1bbe619072b05efb55725c9df851363892b77ad6788dfd28eadce6a8f84a8209
-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-${RT_VERSION}.tar.gz" -o rt.tar.gz \
-  && echo "${RT_SHA}  rt.tar.gz" | sha256sum -c \
+RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-4.2.16.tar.gz" -o rt.tar.gz \
+  && echo "1bbe619072b05efb55725c9df851363892b77ad6788dfd28eadce6a8f84a8209  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz
 
-WORKDIR /usr/local/src/rt-${RT_VERSION}
+WORKDIR /usr/local/src/rt-4.2.16
 RUN ./configure --disable-gpg --disable-smime --enable-developer --enable-gd --enable-graphviz --with-db-type=SQLite \
   && make install \
   && make initdb \

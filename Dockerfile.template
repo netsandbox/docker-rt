@@ -2,17 +2,14 @@ FROM netsandbox/request-tracker-base
 
 LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
 
-ENV RT_VERSION %%RT_VERSION%%
-ENV RT_SHA %%RT_SHA%%
-
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-RUN curl -sSL "https://download.bestpractical.com/pub/rt/%%RT_RELEASE%%/rt-${RT_VERSION}.tar.gz" -o rt.tar.gz \
-  && echo "${RT_SHA}  rt.tar.gz" | sha256sum -c \
+RUN curl -sSL "https://download.bestpractical.com/pub/rt/%%RT_RELEASE%%/rt-%%RT_VERSION%%.tar.gz" -o rt.tar.gz \
+  && echo "%%RT_SHA%%  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz
 
-WORKDIR /usr/local/src/rt-${RT_VERSION}
+WORKDIR /usr/local/src/rt-%%RT_VERSION%%
 RUN ./configure %%RT_CONFIGURE%%
   && make install \
   && make initdb \
