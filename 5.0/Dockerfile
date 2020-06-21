@@ -10,7 +10,13 @@ RUN curl -sSL "https://download.bestpractical.com/pub/rt/devel/rt-5.0.0beta2.tar
   && tar -xzf rt.tar.gz
 
 WORKDIR /usr/local/src/rt-5.0.0beta2
-RUN ./configure --disable-gpg --disable-smime --enable-developer --enable-gd --enable-graphviz --with-db-type=SQLite \
+RUN ./configure \
+    --disable-gpg \
+    --disable-smime \
+    --enable-developer \
+    --enable-gd \
+    --enable-graphviz \
+    --with-db-type=SQLite \
   && make install \
   && make initdb \
   && rm -rf /usr/local/src/*

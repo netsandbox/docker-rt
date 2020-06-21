@@ -3,7 +3,6 @@
 set -euo pipefail
 
 declare -A versions=(
-  [4.0.25]='69daa9b9e6c9acb4ca31ec1c3efc8bb4901cc7047eed784f2f91515815fdd4cd'
   [4.2.16]='1bbe619072b05efb55725c9df851363892b77ad6788dfd28eadce6a8f84a8209'
   [4.4.4]='34c316a4a78d7ee9b95d4391530f9bb3ff3edd99ebbebfac6354ed173e940884'
   [5.0.0beta2]='58687fd1103c04a4f0b622e54d1d4097f36d45aa4d744374add2f76591ceb0ff'
@@ -13,12 +12,6 @@ for rt_version in "${!versions[@]}"; do
   dir=${rt_version:0:3}
   rt_sha=${versions[$rt_version]}
   travis_env+="\n  - VERSION=$dir"
-
-  if [ "$dir" = '4.0' ]; then
-    rt_configure='--disable-gpg --enable-gd --enable-graphviz --with-db-type=SQLite --with-devel-mode \\'
-  else
-    rt_configure='--disable-gpg --disable-smime --enable-developer --enable-gd --enable-graphviz --with-db-type=SQLite \\'
-  fi
 
   if [[ "$rt_version" == *"alpha"* ]] || [[ "$rt_version" == *"beta"* ]]; then
     rt_release='devel'
@@ -37,7 +30,6 @@ for rt_version in "${!versions[@]}"; do
   cp -a Dockerfile.template $dir/Dockerfile
 
   sed -i \
-    -e "s/%%RT_CONFIGURE%%/$rt_configure/" \
     -e "s/%%RT_RELEASE%%/$rt_release/" \
     -e "s/%%RT_SHA%%/$rt_sha/" \
     -e "s/%%RT_VERSION_MAJOR%%/${rt_version:0:1}/" \
