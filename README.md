@@ -4,7 +4,6 @@
 [![Image Size and Layers](https://images.microbadger.com/badges/image/netsandbox/request-tracker.svg)](https://microbadger.com/images/netsandbox/request-tracker "Get your own image badge on microbadger.com")
 # Supported tags and respective `Dockerfile` links
 
--	[`4.0` (4.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.0/Dockerfile)
 -	[`4.2` (4.2/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.2/Dockerfile)
 -	[`4.4`, `latest` (4.4/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/4.4/Dockerfile)
 -	[`5.0beta2`, (5.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/master/5.0/Dockerfile)
