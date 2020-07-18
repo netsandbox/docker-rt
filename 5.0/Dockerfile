@@ -5,11 +5,11 @@ LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-RUN curl -sSL "https://download.bestpractical.com/pub/rt/devel/rt-5.0.0beta2.tar.gz" -o rt.tar.gz \
-  && echo "58687fd1103c04a4f0b622e54d1d4097f36d45aa4d744374add2f76591ceb0ff  rt.tar.gz" | sha256sum -c \
+RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.0.tar.gz" -o rt.tar.gz \
+  && echo "781ac6e21d8e1cf3514ddc6a71418cefde903df241d4e7011e75f90eb62a952e  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz
 
-WORKDIR /usr/local/src/rt-5.0.0beta2
+WORKDIR /usr/local/src/rt-5.0.0
 RUN ./configure \
     --disable-gpg \
     --disable-smime \

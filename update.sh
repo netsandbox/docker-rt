@@ -5,7 +5,7 @@ set -euo pipefail
 declare -A versions=(
   [4.2.16]='1bbe619072b05efb55725c9df851363892b77ad6788dfd28eadce6a8f84a8209'
   [4.4.4]='34c316a4a78d7ee9b95d4391530f9bb3ff3edd99ebbebfac6354ed173e940884'
-  [5.0.0beta2]='58687fd1103c04a4f0b622e54d1d4097f36d45aa4d744374add2f76591ceb0ff'
+  [5.0.0]='781ac6e21d8e1cf3514ddc6a71418cefde903df241d4e7011e75f90eb62a952e'
 )
 travis_env=
 for rt_version in "${!versions[@]}"; do
