@@ -7,11 +7,10 @@ declare -A versions=(
   [4.4.4]='34c316a4a78d7ee9b95d4391530f9bb3ff3edd99ebbebfac6354ed173e940884'
   [5.0.0]='781ac6e21d8e1cf3514ddc6a71418cefde903df241d4e7011e75f90eb62a952e'
 )
-travis_env=
+
 for rt_version in "${!versions[@]}"; do
   dir=${rt_version:0:3}
   rt_sha=${versions[$rt_version]}
-  travis_env+="\n  - VERSION=$dir"
 
   if [[ "$rt_version" == *"alpha"* ]] || [[ "$rt_version" == *"beta"* ]]; then
     rt_release='devel'
@@ -36,7 +35,3 @@ for rt_version in "${!versions[@]}"; do
     -e "s/%%RT_VERSION%%/$rt_version/" \
     "$dir"/apache.rt.conf "$dir"/docker-entrypoint.sh "$dir"/Dockerfile
 done
-
-travis_env=$(echo -e "$travis_env" | sort | sed ':a;N;$!ba;s/\n/\\n/g')
-travis="$(awk -v 'RS=\n\n' '$1 == "env:" { $0 = "env:'"$travis_env"'" } { printf "%s%s", $0, RS }' .travis.yml)"
-echo "$travis" > .travis.yml

@@ -1,7 +1,6 @@
 # Docker image for RT
 
 [![Super-Linter](https://github.com/cloos/docker-rt/workflows/Super-Linter/badge.svg)](https://github.com/marketplace/actions/super-linter)
-[![Travis CI](https://img.shields.io/travis/cloos/docker-rt/master.svg)](https://travis-ci.org/cloos/docker-rt-base)
 [![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
 [![Image Size and Layers](https://images.microbadger.com/badges/image/netsandbox/request-tracker.svg)](https://microbadger.com/images/netsandbox/request-tracker "Get your own image badge on microbadger.com")
