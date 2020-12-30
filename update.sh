@@ -19,22 +19,22 @@ for rt_version in "${!versions[@]}"; do
     rt_release='release'
   fi
 
-  mkdir -p $dir
+  mkdir -p "$dir"
 
   cp -a \
     apache.rt.conf \
     docker-entrypoint.sh \
     RT_SiteConfig.pm \
-    $dir
+    "$dir"
 
-  cp -a Dockerfile.template $dir/Dockerfile
+  cp -a Dockerfile.template "$dir"/Dockerfile
 
   sed -i \
     -e "s/%%RT_RELEASE%%/$rt_release/" \
     -e "s/%%RT_SHA%%/$rt_sha/" \
     -e "s/%%RT_VERSION_MAJOR%%/${rt_version:0:1}/" \
     -e "s/%%RT_VERSION%%/$rt_version/" \
-    $dir/apache.rt.conf $dir/docker-entrypoint.sh $dir/Dockerfile
+    "$dir"/apache.rt.conf "$dir"/docker-entrypoint.sh "$dir"/Dockerfile
 done
 
 travis_env=$(echo -e "$travis_env" | sort | sed ':a;N;$!ba;s/\n/\\n/g')

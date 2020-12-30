@@ -1,3 +1,4 @@
+# hadolint ignore=DL3006
 FROM netsandbox/request-tracker-base
 
 LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
