@@ -35,8 +35,52 @@ docker run -d --name rt -p 8080:80 -e RT_WEB_PORT=8080 netsandbox/request-tracke
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
 
-If you want to test your RT Extension with this Docker image with
-[Travis CI](https://travis-ci.org/), than add a `.travis.yml` file to your
+## RT Extension Testing
+
+You can use these Docker images to test your RT Extensions.
+
+### GitHub Actions
+
+For [GitHub Actions](https://docs.github.com/actions) add a `.github/workflows/rt-extension-test.yml` file to your
+project with this content:
+
+```yaml
+name: RT extension test
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    name: Test RT
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        rt:
+          - '4.2'
+          - '4.4'
+          - '5.0'
+
+    container: netsandbox/request-tracker:${{ matrix.rt }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: RT extension test
+        run: |
+          RELEASE_TESTING=1 perl Makefile.PL
+          make
+          make test
+```
+
+### Travis
+
+For [Travis CI](https://www.travis-ci.com/) add a `.travis.yml` file to your
 project with this content:
 
 ```yaml
