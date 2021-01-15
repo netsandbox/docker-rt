@@ -1,4 +1,4 @@
-# Docker image for RT
+# Docker images for RT
 
 [![Super-Linter](https://github.com/cloos/docker-rt/workflows/Super-Linter/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
@@ -17,9 +17,9 @@ Request Tracker (RT) is an open source issue tracking system.
 
 <https://bestpractical.com/request-tracker>
 
-## How to use this image
+## How to use these Docker images
 
-**This image is intended for development or testing, not for production use.**
+**These images are intended for development or testing, not for production use!**
 
 ```shell
 docker run -d --name rt -p 80:80 netsandbox/request-tracker
