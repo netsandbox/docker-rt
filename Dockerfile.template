@@ -15,6 +15,7 @@ RUN ./configure \
     --disable-gpg \
     --disable-smime \
     --enable-developer \
+    --enable-externalauth \
     --enable-gd \
     --enable-graphviz \
     --with-db-type=SQLite \

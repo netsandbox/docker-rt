@@ -35,3 +35,6 @@ for rt_version in "${!versions[@]}"; do
     -e "s/%%RT_VERSION%%/$rt_version/" \
     "$dir"/apache.rt.conf "$dir"/docker-entrypoint.sh "$dir"/Dockerfile
 done
+
+# RT 4.2 does not support --enable-externalauth
+sed -i '/--enable-externalauth/d' 4.2/Dockerfile
