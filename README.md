@@ -1,15 +1,27 @@
 # Docker images for RT
 
 [![Super-Linter](https://github.com/cloos/docker-rt/workflows/Super-Linter/badge.svg)](https://github.com/marketplace/actions/super-linter)
-[![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
-[![Image Size and Layers](https://images.microbadger.com/badges/image/netsandbox/request-tracker.svg)](https://microbadger.com/images/netsandbox/request-tracker "Get your own image badge on microbadger.com")
+[![Publish Docker Image](https://github.com/netsandbox/docker-rt/workflows/Publish%20Docker%20Image/badge.svg)](https://github.com/marketplace/actions/build-and-push-docker-images)
 
 ## Supported tags and respective `Dockerfile` links
 
 - [`4.2` (4.2/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/4.2/Dockerfile)
 - [`4.4` (4.4/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/4.4/Dockerfile)
 - [`5.0`, `latest` (5.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/5.0/Dockerfile)
+
+## Where is this image available?
+
+### Docker Hub
+
+[![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
+[![Image Size and Layers](https://images.microbadger.com/badges/image/netsandbox/request-tracker.svg)](https://microbadger.com/images/netsandbox/request-tracker "Get your own image badge on microbadger.com")
+
+<https://hub.docker.com/r/netsandbox/request-tracker>
+
+### GitHub Container Registry
+
+<https://github.com/users/netsandbox/packages/container/package/request-tracker>
 
 ## What is Request Tracker?
 
@@ -65,7 +77,7 @@ jobs:
           - '4.4'
           - '5.0'
 
-    container: netsandbox/request-tracker:${{ matrix.rt }}
+    container: ghcr.io/netsandbox/request-tracker:${{ matrix.rt }}
 
     steps:
       - name: Checkout code
