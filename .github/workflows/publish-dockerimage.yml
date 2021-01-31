@@ -1,0 +1,71 @@
+name: Publish Docker Image
+
+on:
+  push:
+    branches: main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        rt:
+          - '4.2'
+          - '4.4'
+          - '5.0'
+
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Build and push RT ${{ matrix.rt }} DockerHub
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ matrix.rt }}/
+          file: ${{ matrix.rt }}/Dockerfile
+          push: true
+          tags: netsandbox/request-tracker:${{ matrix.rt }}
+
+      - name: Build and push RT ${{ matrix.rt }} GitHub Container Registry
+        uses: docker/build-push-action@v2
+        with:
+          build-args: IMAGE=ghcr.io/netsandbox/request-tracker-base
+          context: ${{ matrix.rt }}/
+          file: ${{ matrix.rt }}/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/request-tracker:${{ matrix.rt }}
+
+      - name: Build and push RT latest DockerHub
+        uses: docker/build-push-action@v2
+        with:
+          context: 5.0/
+          file: 5.0/Dockerfile
+          push: true
+          tags: netsandbox/request-tracker:latest
+
+      - name: Build and push RT latest GitHub Container Registry
+        uses: docker/build-push-action@v2
+        with:
+          build-args: IMAGE=ghcr.io/netsandbox/request-tracker-base
+          context: 5.0/
+          file: 5.0/Dockerfile
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/request-tracker:latest
