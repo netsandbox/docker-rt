@@ -1,7 +1,9 @@
-# hadolint ignore=DL3006
-FROM netsandbox/request-tracker-base
+ARG IMAGE=netsandbox/request-tracker-base
+ARG TAG=2021-01-31
+FROM ${IMAGE}:${TAG}
 
 LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
+LABEL org.opencontainers.image.source="https://github.com/netsandbox/docker-rt"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
