@@ -6,15 +6,22 @@ on:
 
 jobs:
   main:
+    name: RT ${{ matrix.rt }} Tag ${{ matrix.tag }}
+    
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        rt:
-          - '4.2'
-          - '4.4'
-          - '5.0'
+        include:
+          - rt: '4.2'
+            tag: '4.2'
+          - rt: '4.4'
+            tag: '4.4'
+          - rt: '5.0'
+            tag: '5.0'
+          - rt: '5.0'
+            tag: latest
 
     steps:
       - name: Checkout
@@ -39,36 +46,19 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Build and push RT ${{ matrix.rt }} DockerHub
+      - name: Build and push RT ${{ matrix.rt }} Tag ${{ matrix.tag }} DockerHub
         uses: docker/build-push-action@v2
         with:
           context: ${{ matrix.rt }}/
           file: ${{ matrix.rt }}/Dockerfile
           push: true
-          tags: netsandbox/request-tracker:${{ matrix.rt }}
+          tags: netsandbox/request-tracker:${{ matrix.tag }}
 
-      - name: Build and push RT ${{ matrix.rt }} GitHub Container Registry
+      - name: Build and push RT ${{ matrix.rt }} Tag ${{ matrix.tag }} GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
           build-args: IMAGE=ghcr.io/netsandbox/request-tracker-base
           context: ${{ matrix.rt }}/
           file: ${{ matrix.rt }}/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/request-tracker:${{ matrix.rt }}
-
-      - name: Build and push RT latest DockerHub
-        uses: docker/build-push-action@v2
-        with:
-          context: 5.0/
-          file: 5.0/Dockerfile
-          push: true
-          tags: netsandbox/request-tracker:latest
-
-      - name: Build and push RT latest GitHub Container Registry
-        uses: docker/build-push-action@v2
-        with:
-          build-args: IMAGE=ghcr.io/netsandbox/request-tracker-base
-          context: 5.0/
-          file: 5.0/Dockerfile
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/request-tracker:latest
+          tags: ghcr.io/${{ github.repository_owner }}/request-tracker:${{ matrix.tag }}
