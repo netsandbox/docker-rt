@@ -34,7 +34,11 @@ Request Tracker (RT) is an open source issue tracking system.
 **These images are intended for development or testing, not for production use!**
 
 ```shell
-docker run -d --name rt -p 80:80 netsandbox/request-tracker
+# Docker Hub images
+docker run -d --name rt -p 80:80 netsandbox/request-tracker:5.0
+
+# GitHub Container Registry images
+docker run -d --name rt -p 80:80 ghcr.io/netsandbox/request-tracker:5.0
 ```
 
 Then, access it via `http://localhost` or `http://host-ip` in a browser.
@@ -42,7 +46,11 @@ Then, access it via `http://localhost` or `http://host-ip` in a browser.
 If you want to run RT on a different port than the default one (80), change the `-p` option and set the `RT_WEB_PORT` environment variable like this:
 
 ```shell
-docker run -d --name rt -p 8080:80 -e RT_WEB_PORT=8080 netsandbox/request-tracker
+# Docker Hub images
+docker run -d --name rt -p 8080:80 -e RT_WEB_PORT=8080 netsandbox/request-tracker:5.0
+
+# GitHub Container Registry images
+docker run -d --name rt -p 8080:80 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/request-tracker:5.0
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
