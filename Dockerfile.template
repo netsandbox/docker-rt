@@ -1,5 +1,5 @@
 ARG IMAGE=netsandbox/request-tracker-base
-ARG TAG=2021-01-31
+ARG TAG=2021-02-20
 FROM ${IMAGE}:${TAG}
 
 LABEL maintainer="Christian Loos <cloos@netsandbox.de>"

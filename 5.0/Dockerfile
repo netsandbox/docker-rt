@@ -1,5 +1,5 @@
 ARG IMAGE=netsandbox/request-tracker-base
-ARG TAG=2021-01-31
+ARG TAG=2021-02-20
 FROM ${IMAGE}:${TAG}
 
 LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
@@ -8,11 +8,11 @@ LABEL org.opencontainers.image.source="https://github.com/netsandbox/docker-rt"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.0.tar.gz" -o rt.tar.gz \
-  && echo "781ac6e21d8e1cf3514ddc6a71418cefde903df241d4e7011e75f90eb62a952e  rt.tar.gz" | sha256sum -c \
+RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.1.tar.gz" -o rt.tar.gz \
+  && echo "6c181cc592c48a2cba8b8df1d45fda0938d70f84ceeba1afc436f16a6090f556  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz
 
-WORKDIR /usr/local/src/rt-5.0.0
+WORKDIR /usr/local/src/rt-5.0.1
 RUN ./configure \
     --disable-gpg \
     --disable-smime \
