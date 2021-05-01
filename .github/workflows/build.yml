@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: Build and Push Docker Image
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   main:
     name: RT ${{ matrix.rt }} Tag ${{ matrix.tag }}
-    
+
     runs-on: ubuntu-latest
 
     strategy:
