@@ -25,16 +25,13 @@ RUN ./configure \
   && make initdb \
   && rm -rf /usr/local/src/*
 
-COPY apache.rt.conf /etc/apache2/sites-available/rt.conf
-RUN a2dissite 000-default.conf && a2ensite rt.conf
+COPY apache.rt.conf /etc/apache2/sites-available/000-default.conf
+COPY RT_SiteConfig.pm /opt/rt%%RT_VERSION_MAJOR%%/etc/RT_SiteConfig.pm
+COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN chown -R www-data:www-data /opt/rt%%RT_VERSION_MAJOR%%/var/
 
-COPY RT_SiteConfig.pm /opt/rt%%RT_VERSION_MAJOR%%/etc/RT_SiteConfig.pm
-
 VOLUME /opt/rt%%RT_VERSION_MAJOR%%
-
-COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
