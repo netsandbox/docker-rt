@@ -2,7 +2,10 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: main
+    branches:
+      - main
+  schedule:
+    - cron: '44 4 * * 0'
 
 jobs:
   main:
@@ -51,6 +54,8 @@ jobs:
         with:
           context: ${{ matrix.rt }}/
           file: ${{ matrix.rt }}/Dockerfile
+          no-cache: true
+          pull: true
           push: true
           tags: netsandbox/request-tracker:${{ matrix.tag }}
 
@@ -60,5 +65,7 @@ jobs:
           build-args: IMAGE=ghcr.io/netsandbox/request-tracker-base
           context: ${{ matrix.rt }}/
           file: ${{ matrix.rt }}/Dockerfile
+          no-cache: true
+          pull: true
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/request-tracker:${{ matrix.tag }}
