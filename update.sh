@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -Eeuo pipefail
 
 declare -A versions=(
   [4.2.16]='1bbe619072b05efb55725c9df851363892b77ad6788dfd28eadce6a8f84a8209'
@@ -8,33 +8,29 @@ declare -A versions=(
   [5.0.1]='6c181cc592c48a2cba8b8df1d45fda0938d70f84ceeba1afc436f16a6090f556'
 )
 
-for rt_version in "${!versions[@]}"; do
-  dir=${rt_version:0:3}
-  rt_sha=${versions[$rt_version]}
+for version in "${!versions[@]}"; do
+  version_major_minor=${version%.*}
 
-  if [[ "$rt_version" == *"alpha"* ]] || [[ "$rt_version" == *"beta"* ]]; then
-    rt_release='devel'
-  else
-    rt_release='release'
+  mkdir -p "$version_major_minor"
+
+  cp apache.rt.conf docker-entrypoint.sh RT_SiteConfig.pm "$version_major_minor"
+  cp Dockerfile.template "$version_major_minor"/Dockerfile
+
+  if [[ "$version_major_minor" == '4.2' ]]; then
+    # RT 4.2 does not support --enable-externalauth
+    sed -i '/--enable-externalauth/d' "$version_major_minor"/Dockerfile
   fi
 
-  mkdir -p "$dir"
-
-  cp -a \
-    apache.rt.conf \
-    docker-entrypoint.sh \
-    RT_SiteConfig.pm \
-    "$dir"
-
-  cp -a Dockerfile.template "$dir"/Dockerfile
+  if [[ "$version" == *"alpha"* ]] || [[ "$version" == *"beta"* ]]; then
+    release='devel'
+  else
+    release='release'
+  fi
 
   sed -i \
-    -e "s/%%RT_RELEASE%%/$rt_release/" \
-    -e "s/%%RT_SHA%%/$rt_sha/" \
-    -e "s/%%RT_VERSION_MAJOR%%/${rt_version:0:1}/" \
-    -e "s/%%RT_VERSION%%/$rt_version/" \
-    "$dir"/apache.rt.conf "$dir"/docker-entrypoint.sh "$dir"/Dockerfile
+    -e "s/%%RT_RELEASE%%/$release/" \
+    -e "s/%%RT_SHA%%/${versions[$version]}/" \
+    -e "s/%%RT_VERSION_MAJOR%%/${version%%.*}/" \
+    -e "s/%%RT_VERSION%%/$version/" \
+    "$version_major_minor"/apache.rt.conf "$version_major_minor"/docker-entrypoint.sh "$version_major_minor"/Dockerfile
 done
-
-# RT 4.2 does not support --enable-externalauth
-sed -i '/--enable-externalauth/d' 4.2/Dockerfile
