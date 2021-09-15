@@ -8,6 +8,8 @@ LABEL org.opencontainers.image.authors="Christian Loos <cloos@netsandbox.de>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+RUN groupadd --gid 1000 --system rt && useradd --uid 1000 --gid rt --system --home-dir /opt/rt rt
+
 WORKDIR /usr/local/src
 
 # hadolint ignore=DL3003,SC2174
@@ -33,7 +35,8 @@ RUN curl -fsSL -o rt.tar.gz https://download.bestpractical.com/pub/rt/release/rt
   && make install \
   && mkdir --mode=0600 --parents /opt/rt/var/data/{gpg,smime} \
   && make initialize-database \
-  && cd .. && rm -rf /usr/local/src/*
+  && cd .. && rm -rf /usr/local/src/* \
+  && chown -R rt:rt /opt/rt
 
 WORKDIR /opt/rt
 COPY RT_SiteConfig.pm etc/
@@ -42,6 +45,8 @@ VOLUME /opt/rt
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
+
+USER rt
 
 EXPOSE 80
 CMD ["/opt/rt/sbin/rt-server"]
