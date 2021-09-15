@@ -8,11 +8,11 @@ LABEL org.opencontainers.image.source="https://github.com/netsandbox/docker-rt"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.1.tar.gz" -o rt.tar.gz \
-  && echo "6c181cc592c48a2cba8b8df1d45fda0938d70f84ceeba1afc436f16a6090f556  rt.tar.gz" | sha256sum -c \
+RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.2.tar.gz" -o rt.tar.gz \
+  && echo "df915ae809277564d9b8a7192ced2517cf6bed6c0301786b69562c0ea9dd9e86  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz
 
-WORKDIR /usr/local/src/rt-5.0.1
+WORKDIR /usr/local/src/rt-5.0.2
 RUN ./configure \
     --disable-gpg \
     --disable-smime \
