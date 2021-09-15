@@ -13,7 +13,7 @@ for version in "${!versions[@]}"; do
 
   mkdir -p "$version_major_minor"
 
-  cp apache.rt.conf docker-entrypoint.sh RT_SiteConfig.pm "$version_major_minor"
+  cp docker-entrypoint.sh RT_SiteConfig.pm "$version_major_minor"
   cp Dockerfile.template "$version_major_minor"/Dockerfile
 
   if [[ "$version_major_minor" == '4.2' ]]; then
@@ -32,5 +32,5 @@ for version in "${!versions[@]}"; do
     -e "s/%%RT_SHA%%/${versions[$version]}/" \
     -e "s/%%RT_VERSION_MAJOR%%/${version%%.*}/" \
     -e "s/%%RT_VERSION%%/$version/" \
-    "$version_major_minor"/apache.rt.conf "$version_major_minor"/docker-entrypoint.sh "$version_major_minor"/Dockerfile
+    "$version_major_minor"/docker-entrypoint.sh "$version_major_minor"/Dockerfile
 done

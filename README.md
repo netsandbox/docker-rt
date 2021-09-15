@@ -47,10 +47,10 @@ If you want to run RT on a different port than the default one (80), change the 
 
 ```shell
 # Docker Hub images
-docker run -d --name rt -p 8080:80 -e RT_WEB_PORT=8080 netsandbox/request-tracker:5.0
+docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 netsandbox/request-tracker:5.0
 
 # GitHub Container Registry images
-docker run -d --name rt -p 8080:80 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/request-tracker:5.0
+docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/request-tracker:5.0
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.

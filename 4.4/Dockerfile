@@ -21,18 +21,19 @@ RUN ./configure \
     --enable-gd \
     --enable-graphviz \
     --with-db-type=SQLite \
+    --with-web-handler=standalone \
   && make install \
   && make initdb \
   && rm -rf /usr/local/src/*
 
-COPY apache.rt.conf /etc/apache2/sites-available/000-default.conf
 COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
-COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN chown -R www-data:www-data /opt/rt4/var/
 
 VOLUME /opt/rt4
 
+COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD ["apache2-foreground"]
+EXPOSE 80
+CMD ["/opt/rt4/sbin/rt-server"]
