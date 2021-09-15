@@ -13,9 +13,9 @@
 
 ### Docker Hub
 
-[![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)](https://hub.docker.com/r/netsandbox/request-tracker/)
-[![Image Size and Layers](https://images.microbadger.com/badges/image/netsandbox/request-tracker.svg)](https://microbadger.com/images/netsandbox/request-tracker "Get your own image badge on microbadger.com")
+![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)
+![Docker Image Size](https://img.shields.io/docker/image-size/netsandbox/request-tracker.svg)
 
 <https://hub.docker.com/r/netsandbox/request-tracker>
 
