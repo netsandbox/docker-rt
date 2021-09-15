@@ -28,8 +28,6 @@ RUN ./configure \
 
 COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
 
-RUN chown -R www-data:www-data /opt/rt4/var/
-
 VOLUME /opt/rt4
 
 COPY docker-entrypoint.sh /usr/local/bin/

@@ -28,8 +28,6 @@ RUN ./configure \
 
 COPY RT_SiteConfig.pm /opt/rt5/etc/RT_SiteConfig.pm
 
-RUN chown -R www-data:www-data /opt/rt5/var/
-
 VOLUME /opt/rt5
 
 COPY docker-entrypoint.sh /usr/local/bin/
