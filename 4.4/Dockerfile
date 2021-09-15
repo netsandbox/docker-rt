@@ -8,12 +8,11 @@ LABEL org.opencontainers.image.source="https://github.com/netsandbox/docker-rt"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-RUN curl -sSL "https://download.bestpractical.com/pub/rt/release/rt-4.4.5.tar.gz" -o rt.tar.gz \
+RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-4.4.5.tar.gz" -o rt.tar.gz \
   && echo "c3025d5fe5bf5479d07318652fa904f4940f5172801a2aae4e397779b519556e  rt.tar.gz" | sha256sum -c \
-  && tar -xzf rt.tar.gz
-
-WORKDIR /usr/local/src/rt-4.4.5
-RUN ./configure \
+  && tar -xzf rt.tar.gz \
+  && cd rt-4.4.5 \
+  && ./configure \
     --disable-gpg \
     --disable-smime \
     --enable-developer \
@@ -23,10 +22,11 @@ RUN ./configure \
     --with-db-type=SQLite \
     --with-web-handler=standalone \
   && make install \
-  && make initdb \
-  && rm -rf /usr/local/src/*
+  && make initialize-database \
+  && cd .. && rm -rf /usr/local/src/*
 
-COPY RT_SiteConfig.pm /opt/rt4/etc/RT_SiteConfig.pm
+WORKDIR /opt/rt4
+COPY RT_SiteConfig.pm etc/
 
 VOLUME /opt/rt4
 
