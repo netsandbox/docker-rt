@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.source="https://github.com/netsandbox/docker-rt"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
-# hadolint ignore=DL3003
+# hadolint ignore=DL3003,SC2174
 RUN curl -fsSL "https://download.bestpractical.com/pub/rt/%%RT_RELEASE%%/rt-%%RT_VERSION%%.tar.gz" -o rt.tar.gz \
   && echo "%%RT_SHA%%  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz \
