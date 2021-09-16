@@ -14,15 +14,16 @@ RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.2.tar.g
   && tar -xzf rt.tar.gz \
   && cd rt-5.0.2 \
   && ./configure \
-    --disable-gpg \
-    --disable-smime \
     --enable-developer \
     --enable-externalauth \
     --enable-gd \
+    --enable-gpg \
     --enable-graphviz \
+    --enable-smime \
     --with-db-type=SQLite \
     --with-web-handler=standalone \
   && make install \
+  && mkdir --mode=0600 --parents /opt/rt5/var/data/{gpg,smime} \
   && make initialize-database \
   && cd .. && rm -rf /usr/local/src/*
 

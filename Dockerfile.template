@@ -14,15 +14,16 @@ RUN curl -fsSL "https://download.bestpractical.com/pub/rt/%%RT_RELEASE%%/rt-%%RT
   && tar -xzf rt.tar.gz \
   && cd rt-%%RT_VERSION%% \
   && ./configure \
-    --disable-gpg \
-    --disable-smime \
     --enable-developer \
     --enable-externalauth \
     --enable-gd \
+    --enable-gpg \
     --enable-graphviz \
+    --enable-smime \
     --with-db-type=SQLite \
     --with-web-handler=standalone \
   && make install \
+  && mkdir --mode=0600 --parents /opt/rt%%RT_VERSION_MAJOR%%/var/data/{gpg,smime} \
   && make initialize-database \
   && cd .. && rm -rf /usr/local/src/*
 
