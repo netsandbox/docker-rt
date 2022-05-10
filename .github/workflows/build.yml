@@ -51,7 +51,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push RT ${{ matrix.rt }} Tag ${{ matrix.tag }} DockerHub
+      - name: Build and push RT ${{ matrix.rt }} Tag ${{ matrix.tag }} Docker Hub
         uses: docker/build-push-action@v3
         with:
           context: ${{ matrix.rt }}/
