@@ -1,6 +1,6 @@
 # Docker images for RT
 
-[![Super-Linter](https://github.com/cloos/docker-rt/workflows/Super-Linter/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![GitHub Super-Linter](https://github.com/netsandbox/docker-rt/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 [![Build and Push Docker Image](https://github.com/netsandbox/docker-rt/actions/workflows/build.yml/badge.svg)](https://github.com/netsandbox/docker-rt/actions/workflows/build.yml)
 
 ## Supported tags and respective `Dockerfile` links
