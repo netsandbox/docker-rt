@@ -9,10 +9,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /usr/local/src
 # hadolint ignore=DL3003,SC2174
-RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-4.4.5.tar.gz" -o rt.tar.gz \
-  && echo "c3025d5fe5bf5479d07318652fa904f4940f5172801a2aae4e397779b519556e  rt.tar.gz" | sha256sum -c \
+RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-4.4.6.tar.gz" -o rt.tar.gz \
+  && echo "1eff5bd9e556b5d6682ccd0e5b2f3dcc2c49a9ec4e215dadb90c4caf5e435e9e  rt.tar.gz" | sha256sum -c \
   && tar -xzf rt.tar.gz \
-  && cd rt-4.4.5 \
+  && cd rt-4.4.6 \
   && ./configure \
     --enable-developer \
     --enable-externalauth \
