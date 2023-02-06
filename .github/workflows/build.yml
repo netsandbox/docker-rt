@@ -105,3 +105,10 @@ jobs:
         run: echo "${{ steps.meta_ghcr.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push-ghcr.outputs.digest }}
         env:
           COSIGN_EXPERIMENTAL: true
+
+      - uses: actions/delete-package-versions@v4
+        if: ${{ matrix.version == '5.0' }}
+        with:
+          package-name: request-tracker
+          package-type: container
+          min-versions-to-keep: 30
