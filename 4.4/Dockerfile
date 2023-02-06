@@ -2,8 +2,7 @@ ARG IMAGE=netsandbox/request-tracker-base
 ARG TAG=latest
 FROM ${IMAGE}:${TAG}
 
-LABEL maintainer="Christian Loos <cloos@netsandbox.de>"
-LABEL org.opencontainers.image.source="https://github.com/netsandbox/docker-rt"
+LABEL org.opencontainers.image.authors="Christian Loos <cloos@netsandbox.de>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
