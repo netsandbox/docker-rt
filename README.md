@@ -19,9 +19,29 @@
 
 <https://hub.docker.com/r/netsandbox/request-tracker>
 
+The images are signed with [cosign](https://github.com/sigstore/cosign).
+To verrify the signature run:
+
+```shell
+COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:latest
+COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:5.0
+COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:4.4
+COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:4.2
+```
+
 ### GitHub Container Registry
 
 <https://github.com/users/netsandbox/packages/container/package/request-tracker>
+
+The images are signed with [cosign](https://github.com/sigstore/cosign).
+To verrify the signature run:
+
+```shell
+COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:latest
+COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:5.0
+COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:4.4
+COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:4.2
+```
 
 ## What is Request Tracker?
 
