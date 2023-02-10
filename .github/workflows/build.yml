@@ -81,6 +81,15 @@ jobs:
         env:
           COSIGN_EXPERIMENTAL: true
 
+      - name: Update Docker Hub description
+        if: ${{ matrix.version == '5.0' }}
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: netsandbox/request-tracker
+          short-description: ${{ github.event.repository.description }}
+
       - uses: actions/delete-package-versions@v4
         if: ${{ matrix.version == '5.0' }}
         with:
