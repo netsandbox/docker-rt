@@ -70,7 +70,7 @@ jobs:
 
       - name: Build and push Docker Hub
         id: build-and-push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: ${{ matrix.version }}/
           file: ${{ matrix.version }}/Dockerfile
@@ -82,7 +82,7 @@ jobs:
 
       - name: Build and push GitHub Container Registry
         id: build-and-push-ghcr
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           build-args: IMAGE=ghcr.io/netsandbox/request-tracker-base
           context: ${{ matrix.version }}/
