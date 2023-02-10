@@ -71,7 +71,7 @@ jobs:
           context: ${{ matrix.version }}/
           file: ${{ matrix.version }}/Dockerfile
           no-cache: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           pull: true
           push: true
           tags: ${{ steps.meta.outputs.tags }}
@@ -80,7 +80,7 @@ jobs:
       - name: Install cosign
         uses: sigstore/cosign-installer@v2
 
-      - name: Sign the published Docker Hub images
+      - name: Sign the published Docker images
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
         env:
           COSIGN_EXPERIMENTAL: true
