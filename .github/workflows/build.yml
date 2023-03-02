@@ -78,7 +78,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Install cosign
-        uses: sigstore/cosign-installer@v2
+        uses: sigstore/cosign-installer@v3
 
       - name: Sign the published Docker images
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
