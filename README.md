@@ -23,10 +23,13 @@ The images are signed with [cosign](https://github.com/sigstore/cosign).
 To verrify the signature run:
 
 ```shell
-COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:latest
-COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:5.0
-COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:4.4
-COSIGN_EXPERIMENTAL=1 cosign verify netsandbox/request-tracker:4.2
+cosign verify \
+  --certificate-identity-regexp https://github.com/netsandbox/docker-rt/ \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  netsandbox/request-tracker:latest \
+  netsandbox/request-tracker:5.0 \
+  netsandbox/request-tracker:4.4 \
+  netsandbox/request-tracker:4.2
 ```
 
 ### GitHub Container Registry
@@ -37,10 +40,13 @@ The images are signed with [cosign](https://github.com/sigstore/cosign).
 To verrify the signature run:
 
 ```shell
-COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:latest
-COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:5.0
-COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:4.4
-COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/netsandbox/request-tracker-base:4.2
+cosign verify \
+  --certificate-identity-regexp https://github.com/netsandbox/docker-rt/ \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  ghcr.io/netsandbox/request-tracker:latest \
+  ghcr.io/netsandbox/request-tracker:5.0 \
+  ghcr.io/netsandbox/request-tracker:4.4 \
+  ghcr.io/netsandbox/request-tracker:4.2
 ```
 
 ## What is Request Tracker?
