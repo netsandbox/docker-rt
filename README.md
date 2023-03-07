@@ -15,7 +15,7 @@
 
 ![Docker Stars](https://img.shields.io/docker/stars/netsandbox/request-tracker.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/netsandbox/request-tracker.svg)
-![Docker Image Size](https://img.shields.io/docker/image-size/netsandbox/request-tracker.svg)
+![Docker Image Size](https://img.shields.io/docker/image-size/netsandbox/request-tracker/latest.svg)
 
 <https://hub.docker.com/r/netsandbox/request-tracker>
 
