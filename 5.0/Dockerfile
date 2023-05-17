@@ -21,6 +21,8 @@ RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.4.tar.g
     --enable-smime \
     --with-db-type=SQLite \
     --with-web-handler=standalone \
+  && /usr/bin/perl -MCPAN -e shell \
+  && make fixdeps \
   && make install \
   && mkdir --mode=0600 --parents /opt/rt5/var/data/{gpg,smime} \
   && make initialize-database \
