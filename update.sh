@@ -5,7 +5,7 @@ set -Eeuo pipefail
 declare -A versions=(
   [4.2.17]='177b7e004b90ec7faaac8e21e11b7bc33bd129aba2d512e4b011c37995f8480c'
   [4.4.7]='47af1651d5df3f25b6374ff6c1da71c66202d61919d9431c17259fa3df69ae59'
-  [5.0.4]='916d870d22d92027f843798be6f880aaf1517aebc3f6ab25f456f4e772f4834d'
+  [5.0.5]='90f845daaa436198c334b6e9cf5afb1df9f4445dcc165d0bcae35de9eb9be8ef'
 )
 
 for version in "${!versions[@]}"; do
