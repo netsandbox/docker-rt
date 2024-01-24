@@ -28,6 +28,7 @@ RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-5.0.5.tar.g
 
 WORKDIR /opt/rt5
 COPY RT_SiteConfig.pm etc/
+COPY rt-passwd-from-env sbin/
 
 VOLUME /opt/rt5
 

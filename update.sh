@@ -15,6 +15,7 @@ for version in "${!versions[@]}"; do
 
   cp docker-entrypoint.sh RT_SiteConfig.pm "$version_major_minor"
   cp Dockerfile.template "$version_major_minor"/Dockerfile
+  cp rt-passwd-from-env "$version_major_minor"/rt-passwd-from-env
 
   if [[ "$version_major_minor" == '4.2' ]]; then
     # RT 4.2 does not support --enable-externalauth

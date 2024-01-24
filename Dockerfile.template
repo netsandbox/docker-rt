@@ -28,6 +28,7 @@ RUN curl -fsSL "https://download.bestpractical.com/pub/rt/%%RT_RELEASE%%/rt-%%RT
 
 WORKDIR /opt/rt%%RT_VERSION_MAJOR%%
 COPY RT_SiteConfig.pm etc/
+COPY rt-passwd-from-env sbin/
 
 VOLUME /opt/rt%%RT_VERSION_MAJOR%%
 

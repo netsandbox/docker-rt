@@ -81,6 +81,22 @@ docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/requ
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
 
+
+### Advanced Options
+
+If you want to use it behind a reverse proxy under another domain as localhost
+
+Set `RT_WEB_DOMAIN` to your domain and set `RT_REDIRECT_URLS` to `1`
+
+You can set another root password with `RT_DEFAULT_PASSWORD`
+
+Example
+
+```shell
+docker run -d --name rt -e RT_WEB_DOMAIN=rt -e RT_WEB_PORT=8888 -e RT_REDIRECT_URLS=1 -e RT_DEFAULT_PASSWORD=12345 -p 8888:8888 netsandbox/request-tracker:5.0
+```
+
+
 ## RT Extension Testing
 
 You can use these Docker images to test your RT Extensions.
