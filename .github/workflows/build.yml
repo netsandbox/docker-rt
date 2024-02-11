@@ -93,7 +93,7 @@ jobs:
           repository: netsandbox/request-tracker
           short-description: ${{ github.event.repository.description }}
 
-      - uses: actions/delete-package-versions@v4
+      - uses: actions/delete-package-versions@v5
         if: ${{ matrix.version == '5.0' }}
         with:
           package-name: request-tracker
