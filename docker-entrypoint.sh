@@ -3,6 +3,7 @@
 set -euo pipefail
 
 : "${RT_CANONICALIZE_REDIRECT_URLS:=0}"
+: "${RT_MAIL_COMMAND:=testfile}"
 : "${RT_WEB_DOMAIN:=localhost}"
 : "${RT_WEB_PORT:=80}"
 
@@ -10,6 +11,7 @@ set -euo pipefail
 
 sed -i \
   -e "s/RT_CANONICALIZE_REDIRECT_URLS/$RT_CANONICALIZE_REDIRECT_URLS/" \
+  -e "s/RT_MAIL_COMMAND/$RT_MAIL_COMMAND/" \
   -e "s/RT_WEB_DOMAIN/$RT_WEB_DOMAIN/" \
   -e "s/RT_WEB_PORT/$RT_WEB_PORT/" \
   /opt/rt%%RT_VERSION_MAJOR%%/etc/RT_SiteConfig.pm
