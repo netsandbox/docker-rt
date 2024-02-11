@@ -82,7 +82,9 @@ Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browse
 
 | Environment Variable | Description |
 | --- | --- |
+| `RT_CANONICALIZE_REDIRECT_URLS` | RT [CanonicalizeRedirectURLs](https://docs.bestpractical.com/rt/latest/RT_Config.html#CanonicalizeRedirectURLs) |
 | `RT_ROOT_PASSWORD` | RT root user password |
+| `RT_WEB_DOMAIN` | RT [WebDomain](https://docs.bestpractical.com/rt/latest/RT_Config.html#WebDomain) |
 | `RT_WEB_PORT` | RT [WebPort](https://docs.bestpractical.com/rt/latest/RT_Config.html#WebPort) |
 
 ## RT Extension Testing
