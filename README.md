@@ -78,6 +78,13 @@ docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/requ
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
 
+### Environment Variables
+
+| Environment Variable | Description |
+| --- | --- |
+| `RT_ROOT_PASSWORD` | RT root user password |
+| `RT_WEB_PORT` | RT [WebPort](https://docs.bestpractical.com/rt/latest/RT_Config.html#WebPort) |
+
 ## RT Extension Testing
 
 You can use these Docker images to test your RT Extensions.
