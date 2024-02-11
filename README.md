@@ -5,7 +5,6 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`4.2` (4.2/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/4.2/Dockerfile)
 - [`4.4` (4.4/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/4.4/Dockerfile)
 - [`5.0`, `latest` (5.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/5.0/Dockerfile)
 
@@ -28,8 +27,7 @@ cosign verify \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
   netsandbox/request-tracker:latest \
   netsandbox/request-tracker:5.0 \
-  netsandbox/request-tracker:4.4 \
-  netsandbox/request-tracker:4.2
+  netsandbox/request-tracker:4.4
 ```
 
 ### GitHub Container Registry
@@ -45,8 +43,7 @@ cosign verify \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
   ghcr.io/netsandbox/request-tracker:latest \
   ghcr.io/netsandbox/request-tracker:5.0 \
-  ghcr.io/netsandbox/request-tracker:4.4 \
-  ghcr.io/netsandbox/request-tracker:4.2
+  ghcr.io/netsandbox/request-tracker:4.4
 ```
 
 ## What is Request Tracker?
@@ -107,7 +104,6 @@ jobs:
       fail-fast: false
       matrix:
         rt:
-          - '4.2'
           - '4.4'
           - '5.0'
 
@@ -134,7 +130,6 @@ language: bash
 services: docker
 
 env:
-  - RT_VERSION=4.2
   - RT_VERSION=4.4
   - RT_VERSION=5.0
 
