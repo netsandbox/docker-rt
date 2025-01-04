@@ -8,10 +8,16 @@ LABEL org.opencontainers.image.authors="Christian Loos <cloos@netsandbox.de>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+RUN gpg --keyserver keyserver.ubuntu.com --recv-keys C49B372F2BF84A19011660270DF0A283FEAC80B2 \
+  && gpg --list-keys
+
 WORKDIR /usr/local/src
+
 # hadolint ignore=DL3003,SC2174
-RUN curl -fsSL "https://download.bestpractical.com/pub/rt/release/rt-4.4.7.tar.gz" -o rt.tar.gz \
-  && echo "47af1651d5df3f25b6374ff6c1da71c66202d61919d9431c17259fa3df69ae59  rt.tar.gz" | sha256sum -c \
+RUN curl -fsSL \
+    -o rt.tar.gz https://download.bestpractical.com/pub/rt/release/rt-4.4.7.tar.gz \
+    -o rt.tar.gz.asc https://download.bestpractical.com/pub/rt/release/rt-4.4.7.tar.gz.asc \
+  && gpg --verify rt.tar.gz.asc rt.tar.gz \
   && tar -xzf rt.tar.gz \
   && cd rt-4.4.7 \
   && ./configure \
