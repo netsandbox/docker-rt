@@ -14,10 +14,10 @@ sed -i \
   -e "s/RT_MAIL_COMMAND/$RT_MAIL_COMMAND/" \
   -e "s/RT_WEB_DOMAIN/$RT_WEB_DOMAIN/" \
   -e "s/RT_WEB_PORT/$RT_WEB_PORT/" \
-  /opt/rt5/etc/RT_SiteConfig.pm
+  /opt/rt/etc/RT_SiteConfig.pm
 
 if [[ -n "${RT_ROOT_PASSWORD}" ]]; then
-  (echo "${RT_ROOT_PASSWORD}" | /opt/rt5/sbin/rt-passwd root) || [[ $? -gt 1 ]] && exit 1
+  (echo "${RT_ROOT_PASSWORD}" | /opt/rt/sbin/rt-passwd root) || [[ $? -gt 1 ]] && exit 1
 fi
 
 exec "$@"

@@ -7,6 +7,8 @@
 
 - [`4.4` (4.4/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/4.4/Dockerfile)
 - [`5.0`, `latest` (5.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/5.0/Dockerfile)
+- [`stable` (stable/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/stable/Dockerfile)
+- [`master` (master/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/master/Dockerfile)
 
 ## Where is this image available?
 
@@ -19,15 +21,13 @@
 <https://hub.docker.com/r/netsandbox/request-tracker>
 
 The images are signed with [cosign](https://github.com/sigstore/cosign).
-To verrify the signature run:
+To verify the signature run the following command with the respective image tag:
 
 ```shell
 cosign verify \
   --certificate-identity-regexp https://github.com/netsandbox/docker-rt/ \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-  netsandbox/request-tracker:latest \
-  netsandbox/request-tracker:5.0 \
-  netsandbox/request-tracker:4.4
+  netsandbox/request-tracker:latest
 ```
 
 ### GitHub Container Registry
@@ -35,15 +35,13 @@ cosign verify \
 <https://github.com/users/netsandbox/packages/container/package/request-tracker>
 
 The images are signed with [cosign](https://github.com/sigstore/cosign).
-To verrify the signature run:
+To verify the signature run the following command with the respective image tag:
 
 ```shell
 cosign verify \
   --certificate-identity-regexp https://github.com/netsandbox/docker-rt/ \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-  ghcr.io/netsandbox/request-tracker:latest \
-  ghcr.io/netsandbox/request-tracker:5.0 \
-  ghcr.io/netsandbox/request-tracker:4.4
+  ghcr.io/netsandbox/request-tracker:latest
 ```
 
 ## What is Request Tracker?

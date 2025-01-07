@@ -29,6 +29,8 @@ jobs:
         version:
           - '4.4'
           - '5.0'
+          - 'stable'
+          - 'master'
 
     steps:
       - name: Checkout repository
@@ -84,7 +86,7 @@ jobs:
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign --yes {}@${{ steps.build-and-push.outputs.digest }}
 
       - name: Update Docker Hub description
-        if: ${{ matrix.version == '5.0' }}
+        if: ${{ matrix.version == 'master' }}
         uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -93,7 +95,7 @@ jobs:
           short-description: ${{ github.event.repository.description }}
 
       - uses: actions/delete-package-versions@v5
-        if: ${{ matrix.version == '5.0' }}
+        if: ${{ matrix.version == 'master' }}
         with:
           package-name: request-tracker
           package-type: container
