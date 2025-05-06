@@ -11,9 +11,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /usr/local/src
 
 # hadolint ignore=DL3003,SC2174
-RUN curl -fsSL -o rt.tar.gz https://download.bestpractical.com/pub/rt/release/rt-4.4.7.tar.gz \
-  && if [[ "https://download.bestpractical.com/pub/rt/release/rt-4.4.7.tar.gz" =~ ^https://download.bestpractical.com/pub/rt/ ]]; then \
-    curl -fsSL -o rt.tar.gz.asc https://download.bestpractical.com/pub/rt/release/rt-4.4.7.tar.gz.asc; \
+RUN curl -fsSL -o rt.tar.gz https://download.bestpractical.com/pub/rt/release/rt-4.4.8.tar.gz \
+  && if [[ "https://download.bestpractical.com/pub/rt/release/rt-4.4.8.tar.gz" =~ ^https://download.bestpractical.com/pub/rt/ ]]; then \
+    curl -fsSL -o rt.tar.gz.asc https://download.bestpractical.com/pub/rt/release/rt-4.4.8.tar.gz.asc; \
     gpg --keyserver keyserver.ubuntu.com --recv-keys C49B372F2BF84A19011660270DF0A283FEAC80B2; \
     gpg --list-keys; \
     gpg --verify rt.tar.gz.asc rt.tar.gz; \
