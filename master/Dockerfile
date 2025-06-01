@@ -20,12 +20,11 @@ RUN curl -fsSL -o rt.tar.gz https://github.com/bestpractical/rt/archive/refs/hea
   fi \
   && tar -xzf rt.tar.gz \
   && cd rt-* \
-  && echo "rt-6.0.master.$(date -I)" > .tag \
+  && echo "rt-7.0.master.$(date -I)" > .tag \
   && ./configure.ac \
     --prefix=/opt/rt \
     --enable-developer \
     --enable-externalauth \
-    --enable-gd \
     --enable-gpg \
     --enable-graphviz \
     --enable-smime \

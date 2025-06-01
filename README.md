@@ -6,7 +6,8 @@
 ## Supported tags and respective `Dockerfile` links
 
 - [`4.4` (4.4/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/4.4/Dockerfile)
-- [`5.0`, `latest` (5.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/5.0/Dockerfile)
+- [`5.0` (5.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/5.0/Dockerfile)
+- [`6.0`, `latest` (6.0/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/6.0/Dockerfile)
 - [`stable` (stable/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/stable/Dockerfile)
 - [`master` (master/*Dockerfile*)](https://github.com/cloos/docker-rt/blob/main/master/Dockerfile)
 
@@ -56,10 +57,10 @@ Request Tracker (RT) is an open source issue tracking system.
 
 ```shell
 # Docker Hub images
-docker run -d --name rt -p 80:80 netsandbox/request-tracker:5.0
+docker run -d --name rt -p 80:80 netsandbox/request-tracker:6.0
 
 # GitHub Container Registry images
-docker run -d --name rt -p 80:80 ghcr.io/netsandbox/request-tracker:5.0
+docker run -d --name rt -p 80:80 ghcr.io/netsandbox/request-tracker:6.0
 ```
 
 Then, access it via `http://localhost` or `http://host-ip` in a browser.
@@ -68,10 +69,10 @@ If you want to run RT on a different port than the default one (80), change the 
 
 ```shell
 # Docker Hub images
-docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 netsandbox/request-tracker:5.0
+docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 netsandbox/request-tracker:6.0
 
 # GitHub Container Registry images
-docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/request-tracker:5.0
+docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/request-tracker:6.0
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -114,6 +115,7 @@ jobs:
         rt:
           - '4.4'
           - '5.0'
+          - '6.0'
 
     container: ghcr.io/netsandbox/request-tracker:${{ matrix.rt }}
 
@@ -140,6 +142,7 @@ services: docker
 env:
   - RT_VERSION=4.4
   - RT_VERSION=5.0
+  - RT_VERSION=6.0
 
 before_install:
   - env | sort

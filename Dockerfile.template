@@ -25,7 +25,6 @@ RUN curl -fsSL -o rt.tar.gz %%RT_URL%% \
     --prefix=/opt/rt \
     --enable-developer \
     --enable-externalauth \
-    --enable-gd \
     --enable-gpg \
     --enable-graphviz \
     --enable-smime \

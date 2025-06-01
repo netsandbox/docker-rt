@@ -29,6 +29,7 @@ jobs:
         version:
           - '4.4'
           - '5.0'
+          - '6.0'
           - 'stable'
           - 'master'
 
@@ -45,7 +46,7 @@ jobs:
             ghcr.io/netsandbox/request-tracker
           tags: |
             type=raw,value=${{ matrix.version }}
-            type=raw,value=latest,enable=${{ matrix.version == '5.0' }}
+            type=raw,value=latest,enable=${{ matrix.version == '6.0' }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

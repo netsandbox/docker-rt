@@ -11,16 +11,15 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 WORKDIR /usr/local/src
 
 # hadolint ignore=DL3003,SC2174
-RUN curl -fsSL -o rt.tar.gz https://github.com/bestpractical/rt/archive/refs/heads/stable.tar.gz \
-  && if [[ "https://github.com/bestpractical/rt/archive/refs/heads/stable.tar.gz" =~ ^https://download.bestpractical.com/pub/rt/ ]]; then \
-    curl -fsSL -o rt.tar.gz.asc https://github.com/bestpractical/rt/archive/refs/heads/stable.tar.gz.asc; \
+RUN curl -fsSL -o rt.tar.gz https://download.bestpractical.com/pub/rt/release/rt-6.0.0.tar.gz \
+  && if [[ "https://download.bestpractical.com/pub/rt/release/rt-6.0.0.tar.gz" =~ ^https://download.bestpractical.com/pub/rt/ ]]; then \
+    curl -fsSL -o rt.tar.gz.asc https://download.bestpractical.com/pub/rt/release/rt-6.0.0.tar.gz.asc; \
     gpg --keyserver keyserver.ubuntu.com --recv-keys C49B372F2BF84A19011660270DF0A283FEAC80B2; \
     gpg --list-keys; \
     gpg --verify rt.tar.gz.asc rt.tar.gz; \
   fi \
   && tar -xzf rt.tar.gz \
   && cd rt-* \
-  && echo "rt-6.0.stable.$(date -I)" > .tag \
   && ./configure.ac \
     --prefix=/opt/rt \
     --enable-developer \
@@ -30,7 +29,6 @@ RUN curl -fsSL -o rt.tar.gz https://github.com/bestpractical/rt/archive/refs/hea
     --enable-smime \
     --with-db-type=SQLite \
     --with-web-handler=standalone \
-  && RT_FIX_DEPS_CMD=cpanm make fixdeps && rm -rf /root/.cpanm \
   && make install \
   && mkdir --mode=0600 --parents /opt/rt/var/data/{gpg,smime} \
   && make initialize-database \
