@@ -88,7 +88,7 @@ jobs:
 
       - name: Update Docker Hub description
         if: ${{ matrix.version == 'master' }}
-        uses: peter-evans/dockerhub-description@v4
+        uses: peter-evans/dockerhub-description@v5
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
