@@ -94,10 +94,3 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: netsandbox/request-tracker
           short-description: ${{ github.event.repository.description }}
-
-      - uses: actions/delete-package-versions@v5
-        if: ${{ matrix.version == 'master' }}
-        with:
-          package-name: request-tracker
-          package-type: container
-          min-versions-to-keep: 30
