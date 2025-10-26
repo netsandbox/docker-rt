@@ -90,7 +90,7 @@ jobs:
         if: ${{ matrix.version == 'master' }}
         uses: peter-evans/dockerhub-description@v5
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: netsandbox/request-tracker
           short-description: ${{ github.event.repository.description }}
