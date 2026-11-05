@@ -77,6 +77,14 @@ docker run -d --name rt -p 8080:8080 -e RT_WEB_PORT=8080 ghcr.io/netsandbox/requ
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
 
+RT's session cookie is marked as "secure" by default which is advised in
+production. This is configurable via the `$WebSecureCookies` variable. For RT
+to work consistently over HTTP in development this has been overridden to 0
+to allow insecure cookies.
+
+To re-enable secure cookies set the environment variable `RT_WEB_SECURE_COOKIES`
+to `1`.
+
 ### Environment Variables
 
 | Environment Variable | Description |
@@ -86,6 +94,7 @@ Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browse
 | `RT_ROOT_PASSWORD` | RT root user password |
 | `RT_WEB_DOMAIN` | RT [WebDomain](https://docs.bestpractical.com/rt/latest/RT_Config.html#WebDomain) |
 | `RT_WEB_PORT` | RT [WebPort](https://docs.bestpractical.com/rt/latest/RT_Config.html#WebPort) |
+| `RT_WEB_SECURE_COOKIES` | RT [WebSecureCookies](https://docs.bestpractical.com/rt/latest/RT_Config.html#WebSecureCookies) |
 
 ## RT Extension Testing
 
