@@ -6,6 +6,7 @@ set -euo pipefail
 : "${RT_MAIL_COMMAND:=testfile}"
 : "${RT_WEB_DOMAIN:=localhost}"
 : "${RT_WEB_PORT:=80}"
+: "${RT_WEB_SECURE_COOKIES:=0}"
 
 : "${RT_ROOT_PASSWORD:=}"
 
@@ -14,6 +15,7 @@ sed -i \
   -e "s/RT_MAIL_COMMAND/$RT_MAIL_COMMAND/" \
   -e "s/RT_WEB_DOMAIN/$RT_WEB_DOMAIN/" \
   -e "s/RT_WEB_PORT/$RT_WEB_PORT/" \
+  -e "s/RT_WEB_SECURE_COOKIES/$RT_WEB_SECURE_COOKIES/" \
   /opt/rt/etc/RT_SiteConfig.pm
 
 if [[ -n "${RT_ROOT_PASSWORD}" ]]; then
