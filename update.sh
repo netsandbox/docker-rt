@@ -2,7 +2,7 @@
 
 set -Eeuo pipefail
 
-declare -a versions=("4.4.9" "5.0.10" "6.0.3" "stable" "master")
+declare -a versions=("4.4.9" "5.0.11" "6.0.4" "stable" "master")
 
 for version in "${versions[@]}"; do
   rt_dir=${version%.*}
